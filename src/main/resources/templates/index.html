@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body>
+
+<div>
+    <text th:align="center">
+        <h1>Recent News from the world</h1>
+    </text>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Descryption</th>
+        <th scope="col">Author</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="article : ${articles}">
+
+        <td th:text="${article.getArticleId()}"/>
+        <td th:text="${article.getTitle()}"/>
+        <td th:text="${article.getDescription()}"/>
+        <td th:text="${article.getAuthor()}"/>
+    </tr>
+
+    </tbody>
+</table>
+
+<h5 th:align="center">Update article:</h5>
+<form th:action="@{/update-article}" th:object="${update}" method="post">
+    <div class="form-row">
+        <div class="col">
+            <input th:type="text" th:field="*{articleId}" class="form-control" placeholder="ID">
+        </div>
+
+        <div class="col">
+            <input th:type="text" th:field="*{title}" class="form-control" placeholder="title">
+        </div>
+
+        <div class="col">
+            <input th:type="text" th:field="*{description}" class="form-control" placeholder="desc">
+        </div>
+
+        <div class="col">
+            <input th:type="text" th:field="*{author}" class="form-control" placeholder="author">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
