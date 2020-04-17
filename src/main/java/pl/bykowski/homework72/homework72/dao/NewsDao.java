@@ -50,7 +50,11 @@ public class NewsDao implements NewsInterface {
         List<Article> getNews = newsService.getNewsRest().getArticles();
         for (Article getNew : getNews) {
             String sql = "INSERT INTO news VALUES (?,?,?,?)";
-            jdbcTemplate.update(sql, getNew.getArticleId(), getNew.getTitle(), getNew.getDescription(), getNew.getAuthor());
+            jdbcTemplate.update(sql,
+                    getNew.getArticleId(),
+                    getNew.getTitle(),
+                    getNew.getDescription(),
+                    getNew.getAuthor());
 
         }
 

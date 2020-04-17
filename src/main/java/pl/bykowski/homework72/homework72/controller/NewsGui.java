@@ -21,7 +21,6 @@ public class NewsGui {
 
     }
 
-
     @GetMapping
     public String getNews(Model model) {
         model.addAttribute("articles", newsDao.findAll());
